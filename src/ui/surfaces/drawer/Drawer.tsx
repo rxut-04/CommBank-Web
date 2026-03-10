@@ -6,6 +6,10 @@ import CommBank from '../../../assets/images/commbank.svg'
 import { media } from '../../utils/media'
 
 export default function Navbar() {
+  const scrollToGoals = () => {
+    document.getElementById('goals-section')?.scrollIntoView({ behavior: 'smooth' })
+  }
+
   return (
     <DrawerContainer>
       <Section>
@@ -18,7 +22,7 @@ export default function Navbar() {
           <span>Dashboard</span>
         </DrawerItem>
 
-        <DrawerItem isSelected={false}>
+        <DrawerItem isSelected={false} onClick={scrollToGoals} role="button" tabIndex={0} onKeyDown={(e) => e.key === 'Enter' && scrollToGoals()}>
           <FontAwesomeIcon icon={faChartLine} size="2x" />
           <span>Goals</span>
         </DrawerItem>
@@ -68,6 +72,7 @@ const DrawerItem = styled.div<DrawerItemProps>`
   width: 100%;
   border-radius: 12px;
   margin-top: 4rem;
+  cursor: ${(props) => (props.isSelected ? 'default' : 'pointer')};
   background-color: ${(props) => (props.isSelected ? 'rgba(254, 223, 3, 0.4)' : '')};
   color: ${(props) => (props.isSelected ? '' : 'rgba(174, 174, 174, 1)')};
   font-weight: ${(props) => (props.isSelected ? 'bold' : 'light')};

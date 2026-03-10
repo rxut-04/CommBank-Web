@@ -56,7 +56,7 @@ export function GoalManager(props: Props) {
     setEmojiPickerIsOpen(true)
   }
 
-  const pickEmojiOnClick = (emoji: BaseEmoji, event: React.MouseEvent) => {
+  const pickEmojiOnClick = async (emoji: BaseEmoji, event: React.MouseEvent) => {
     event.stopPropagation()
     setIcon(emoji.native)
     setEmojiPickerIsOpen(false)
@@ -68,7 +68,7 @@ export function GoalManager(props: Props) {
       targetAmount: targetAmount ?? props.goal.targetAmount,
     }
     dispatch(updateGoalRedux(updatedGoal))
-    updateGoalApi(props.goal.id, updatedGoal)
+    await updateGoalApi(props.goal.id, updatedGoal)
   }
 
   const updateNameOnChange = (event: React.ChangeEvent<HTMLInputElement>) => {

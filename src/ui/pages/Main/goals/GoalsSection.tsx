@@ -38,7 +38,7 @@ export default function GoalsSection() {
   }
 
   return (
-    <Container>
+    <Container id="goals-section">
       <TopGroup>
         <SectionHeading>Goals</SectionHeading>
         <Icon onClick={onClick}>
